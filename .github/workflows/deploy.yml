@@ -19,15 +19,17 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./pickdby-frontend
 
-    - name: Build Vite app
+    - name: Build the app
       run: npm run build
+      working-directory: ./pickdby-frontend
 
-    - name: Copy dist to Lightsail server
+    - name: Upload build to Lightsail
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-        source: "dist/*"
+        source: "pickdby-frontend/dist/*"
         target: "/home/ubuntu/pickdby"
