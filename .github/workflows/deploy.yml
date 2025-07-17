@@ -34,5 +34,6 @@ jobs:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-        source: "pickdby-frontend/dist/*"
+        source: "pickdby-frontend/dist/"
         target: "/home/ubuntu/pickdby"
+
