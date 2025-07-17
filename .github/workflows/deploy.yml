@@ -25,6 +25,9 @@ jobs:
       run: npm run build
       working-directory: ./pickdby-frontend
 
+    - name: List built files
+      run: ls -la pickdby-frontend/dist
+
     - name: Upload build to Lightsail
       uses: appleboy/scp-action@v0.1.7
       with:
