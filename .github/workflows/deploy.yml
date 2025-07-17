@@ -25,8 +25,8 @@ jobs:
       run: npm run build
       working-directory: ./pickdby-frontend
 
-    - name: List built files
-      run: ls -la pickdby-frontend/dist
+    - name: List contents of dist before upload
+      run: ls -lah pickdby-frontend/dist
 
     - name: Upload build to Lightsail
       uses: appleboy/scp-action@v0.1.7
@@ -34,6 +34,8 @@ jobs:
         host: ${{ secrets.LIGHTSAIL_HOST }}
         username: ${{ secrets.LIGHTSAIL_USER }}
         key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-        source: "pickdby-frontend/dist/"
-        target: "/home/ubuntu/pickdby"
+        source: "./pickdby-frontend/dist"
+        target: "/home/admin/pickdby"
+        debug: true
+
 
